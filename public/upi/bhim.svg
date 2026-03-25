@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" rx="24" fill="#00529b"/>
+  <text x="100" y="108" font-family="Arial Black, Arial" font-weight="900" font-size="52" fill="white" text-anchor="middle" letter-spacing="4">BHIM</text>
+  <text x="100" y="148" font-family="Arial, sans-serif" font-weight="600" font-size="22" fill="rgba(255,255,255,0.75)" text-anchor="middle" letter-spacing="6">UPI</text>
+</svg>
