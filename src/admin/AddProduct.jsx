@@ -6,12 +6,16 @@ import { toast } from 'react-toastify';
 import { db } from '../firebase/config';
 import Button from '../components/Button';
 
-const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/deyznewuv/image/upload';
-const CLOUDINARY_PRESET = 'cricer365';
-const CLOUDINARY_VIDEO_URL = 'https://api.cloudinary.com/v1_1/deyznewuv/video/upload';
+const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+const CLOUDINARY_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
+const CLOUDINARY_VIDEO_URL = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/video/upload`;
 
 /* Upload image to Cloudinary */
 const uploadImage = async (file, onProgress) => {
+  if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_PRESET) {
+    throw new Error('Cloudinary environment variables are not configured');
+  }
   const data = new FormData();
   data.append('file', file);
   data.append('upload_preset', CLOUDINARY_PRESET);
