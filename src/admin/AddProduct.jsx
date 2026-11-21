@@ -31,6 +31,9 @@ const uploadImage = async (file, onProgress) => {
 
 /* Upload video to Cloudinary (video resource type) */
 const uploadVideo = async (file, onProgress) => {
+  if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_PRESET) {
+    throw new Error('Cloudinary environment variables are not configured');
+  }
   const data = new FormData();
   data.append('file', file);
   data.append('upload_preset', CLOUDINARY_PRESET);
